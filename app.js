@@ -2,7 +2,7 @@
 import express from 'express';
 import mongoose from 'mongoose';
 
-import { studentRouter } from './routes/studentRoutes.js';
+import { accountRouter } from './routes/accountRoutes.js';
 
 const app = express();
 
@@ -10,23 +10,20 @@ const app = express();
 (async () => {
   try {
     await mongoose.connect(
-      'mongodb+srv://' +
-        process.env.USERDB +
-        ':' +
-        process.env.PWDDB +
-        '@bootcamp-smurc.mongodb.net/grades?retryWrites=true&w=majority',
+      'mongodb+srv://glyra:ba993368@cluster0.hjh9y.mongodb.net/accounts?retryWrites=true&w=majority',
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
+        useFindAndModify: false,
       }
     );
     console.log('Conectado no MongoDB');
   } catch (error) {
-    console.log('Erro ao conectar no MongoDB');
+    console.log('Erro ao conectar no MongoDB : ' + error);
   }
 })();
 
 app.use(express.json());
-app.use(studentRouter);
+app.use(accountRouter);
 
-app.listen(process.env.PORT, () => console.log('Servidor em execucao'));
+app.listen(3000, () => console.log('Servidor em execucao'));

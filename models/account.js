@@ -1,19 +1,19 @@
 import mongoose from 'mongoose';
 
-const studentSchema = mongoose.Schema({
+const accountSchema = mongoose.Schema({
+  agencia: {
+    type: Number,
+    required: true,
+  },
+  conta: {
+    type: Number,
+    required: true,
+  },
   name: {
     type: String,
     required: true,
   },
-  subject: {
-    type: String,
-    required: true,
-  },
-  type: {
-    type: String,
-    required: true,
-  },
-  value: {
+  balance: {
     type: Number,
     required: true,
     //Valida se a nota inserida e' menor que zero
@@ -21,12 +21,8 @@ const studentSchema = mongoose.Schema({
       if (value < 0) throw new Error('Valor negativo para nota');
     },
   },
-  lastModified: {
-    type: Date,
-    default: Date.now,
-  },
 });
 
-const studentModel = mongoose.model('student', studentSchema, 'student');
+const accountModel = mongoose.model('accounts', accountSchema, 'accounts');
 
-export { studentModel };
+export { accountModel };
