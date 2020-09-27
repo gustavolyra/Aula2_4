@@ -10,7 +10,7 @@ const app = express();
 (async () => {
   try {
     await mongoose.connect(
-      'mongodb+srv://glyra:ba993368@cluster0.hjh9y.mongodb.net/accounts?retryWrites=true&w=majority',
+      'mongodb+srv://glyra:PASSWORD@cluster0.hjh9y.mongodb.net/accounts?retryWrites=true&w=majority',
       {
         useNewUrlParser: true,
         useUnifiedTopology: true,
